@@ -1,0 +1,32 @@
+ #include <stdio.h>
+int calls = 0;
+int verifyCard()
+{
+    calls++;
+    printf("Card Verified\n");
+    return 1;
+}
+int main()
+{
+    int senior = 0;
+    int eligible = 1;
+    int disability = 1;
+    if (senior && eligible)
+        printf("Eligible\n");
+    else
+        printf("Not Eligible\n");
+    if (disability || verifyCard())
+        printf("Concession Granted\n");
+
+    printf("Function Calls = %d\n", calls);
+    calls = 0;
+
+    if (senior & verifyCard())
+        printf("Eligible\n");
+    else
+        printf("Not Eligible\n");
+
+    printf("Function Calls = %d\n", calls);
+
+    return 0;
+}
