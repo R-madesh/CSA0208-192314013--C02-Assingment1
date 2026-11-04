@@ -1,0 +1,42 @@
+ #include <stdio.h>
+int main()
+{
+    unsigned char reg = 0;
+
+    // Switch ON LIGHT
+    reg = reg | (1 << 0);
+
+    // Switch ON AC
+    reg = reg | (1 << 2);
+
+    // Print register
+    printf("Register = ");
+    for (int i = 7; i >= 0; i--)
+        printf("%d", (reg >> i) & 1);
+    printf("\n");
+
+    // Toggle FAN
+    reg = reg ^ (1 << 1);
+
+    // Switch OFF LIGHT
+    reg = reg & ~(1 << 0);
+
+    // Print register
+    printf("Register = ");
+    for (int i = 7; i >= 0; i--)
+        printf("%d", (reg >> i) & 1);
+    printf("\n");
+
+    // Check device status
+    if (reg & (1 << 2))
+        printf("AC is ON\n");
+    else
+        printf("AC is OFF\n");
+
+    if (reg & (1 << 4))
+        printf("PUMP is ON\n");
+    else
+        printf("PUMP is OFF\n");
+
+    return 0;
+}
